@@ -17,11 +17,11 @@ directly from HTML file in `<script src="...">`.
 Library exports class `NotifyMe` with two static functions
 ```JS
 class NotifyMe {
-    static async sendMessage(url: string, token: string, message: string): Promise<QueryResult> 
-    { // ... 
+    static async sendMessage(url: string, token: string, message: string): Promise<QueryResult>
+    { // ...
     }
 
-    static createSender(url: string, token: string): (message: string) => Promise<QueryResult> 
+    static createSender(url: string, token: string): (message: string) => Promise<QueryResult>
     { // ...
     }
 }
@@ -53,6 +53,19 @@ await sender("Message text");
     sender("Message text from sender (one more)").catch();
 </script>
 ```
+Returned value with type `QueryResult`
+```TS
+interface QueryResult {
+  status: string;
+  message?: string;
+}
+```
+on success will contain `status = "OK"` and HTTP code 2xx (200 or 201).
+On error `message` will contain error desription and status
+- "SERVER_ERROR" - for internal server error
+- "UNAUTHORIZED" - incorrect token (not found in database)
+
+If You get error response - HTTP code can be any. If http request do not even reached bot application, HTTP code will be not 2xx. Some exceptions also can be thrown on error.
 
 ### Examples
 ```
