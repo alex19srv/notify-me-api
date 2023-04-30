@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NotifyMe</title>
+</head>
+<body>
+
+<script src="https://notify-me.service.ru/scripts/notify-me.js"></script>
+<script>
+    NotifyMe.sendMessage(
+        "https://notify-me.service.ru/send-message"
+        ,"KA10D...cFQkKZrMCiVM"
+        ,"from browser");
+
+    const sender = NotifyMe.createSender(
+        "https://notify-me.service.ru/send-message"
+        ,"KA10D...kKZrMCiVM");
+    sender("Message text from sender").catch();
+    sender("Message text from sender (one more)").catch();
+</script>
+</body>
+</html>

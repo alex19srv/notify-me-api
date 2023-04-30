@@ -1,0 +1,22 @@
+{
+  "name": "notify-me-api",
+  "private": true,
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "types":   "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.cjs",
+      "import":  "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc --module es2022 --declaration true --declarationDir dist/types --outDir dist/esm/ && echo '{\"type\": \"module\"}' > ./dist/esm/package.json && tsc --module commonjs --outDir dist/cjs/ && mv dist/cjs/index.js dist/cjs/index.cjs && mkdir -p dist/html && npx tsc --target esnext src/index.ts && mv src/index.js dist/html"
+  },
+  "devDependencies": {
+    "typescript": ">=4.9.5"
+  }
+}
