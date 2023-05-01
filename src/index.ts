@@ -20,8 +20,24 @@ export class NotifyMe {
       body: JSON.stringify(data),
     });
 
-    return await response.json();
+    const result: QueryResult = await response.json();
+
+    if( !result?.status ) {
+      console.error("returned object have not valid format. Object:", result );
+      throw new RangeError( "returned object have not valid format" );
+    }
+    const status = result.status;
+    if( status === "OK" ) {
+      return result;
+    }
+
+    if( result.message ) {
+      throw new Error( status + ": " + result.message );
+    } else {
+      throw new Error( "" + status );
+    }
   }
+
   static createSender( url: string, token: string ): (message: string) => Promise<QueryResult>
   {
     return (message: string) => NotifyMe.sendMessage(url, token, message);

@@ -60,12 +60,8 @@ interface QueryResult {
   message?: string;
 }
 ```
-on success will contain `status = "OK"` and HTTP code 2xx (200 or 201).
-On error `message` will contain error desription and status
-- "SERVER_ERROR" - for internal server error
-- "UNAUTHORIZED" - incorrect token (not found in database)
-
-If You get error response - HTTP code can be any. If http request do not even reached bot application, HTTP code will be not 2xx. Some exceptions also can be thrown on error.
+on success this object will contain `status = "OK"`.
+On error both sending functions will throw exceptions.
 
 ### Examples
 ```

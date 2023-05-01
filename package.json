@@ -1,7 +1,6 @@
 {
   "name": "notify-me-api",
-  "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/alex19srv/notify-me-api.git"
