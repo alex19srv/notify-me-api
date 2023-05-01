@@ -1,6 +1,9 @@
 {
   "name": "notify-me-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "license": "Apache-2.0",
+  "description": "Notify Me service API",
+  "author": "Alex Syrnikov <alex.syrnikov19@gmail.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/alex19srv/notify-me-api.git"
